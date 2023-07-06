@@ -11,13 +11,12 @@ function Card ({ card, onImageClick}) {
         <h2 className="elements__caption">{card.name}</h2>
         <div className="elements__like-container">
           <button type="button" className="elements__like-button"></button>
-          <span className="elements__like-counter">0</span>
+          <span className="elements__like-counter">{card.likes.length}</span>
         </div>
       </div>
-      <button type="button" className="elements__remove-button"></button>
+      <button type="button" className="elements__remove-button"/>
     </>
   )
 }
 
 export default Card;
-
