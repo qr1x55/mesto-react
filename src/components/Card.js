@@ -1,4 +1,9 @@
-function Card ({ card, onImageClick}) {
+import { useContext } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
+import ButtonLike from "./ButtonLike.js";
+
+function Card ({ card, onImageClick, onDelete}) {
+  const currentUser = useContext(CurrentUserContext);
   return(
     <>
       <img 
@@ -10,11 +15,10 @@ function Card ({ card, onImageClick}) {
       <div className="elements__caption-block">
         <h2 className="elements__caption">{card.name}</h2>
         <div className="elements__like-container">
-          <button type="button" className="elements__like-button"></button>
-          <span className="elements__like-counter">{card.likes.length}</span>
+          <ButtonLike myId={currentUser._id} likes={card.likes} cardId={card._id} />
         </div>
       </div>
-      <button type="button" className="elements__remove-button"/>
+      {currentUser._id === card.owner._id && <button type="button" className="elements__remove-button" onClick={() => onDelete(card._id)}/>}
     </>
   )
 }

@@ -1,7 +1,7 @@
 function ImagePopup({card, isOpen, onClose}) {
   return (
-    <div className={`popup popup_type_picture ${isOpen && 'popup_opened'}`}>
-      <div className="popup__container popup__container_type_picture">
+    <div className={`popup popup_type_picture ${isOpen ? 'popup_opened' : ''}`} onClick={onClose}>
+      <div className="popup__container popup__container_type_picture" onClick={e => e.stopPropagation()}>
         <img 
           className="popup__picture" 
           src={card.link} 
